@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bells/static/css/main.2101df61.chunk.css",
-    "main.js": "/bells/static/js/main.8bded57b.chunk.js",
-    "main.js.map": "/bells/static/js/main.8bded57b.chunk.js.map",
+    "main.js": "/bells/static/js/main.d5e44812.chunk.js",
+    "main.js.map": "/bells/static/js/main.d5e44812.chunk.js.map",
     "runtime-main.js": "/bells/static/js/runtime-main.0288c246.js",
     "runtime-main.js.map": "/bells/static/js/runtime-main.0288c246.js.map",
     "static/js/2.673e3b30.chunk.js": "/bells/static/js/2.673e3b30.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.0288c246.js",
     "static/js/2.673e3b30.chunk.js",
     "static/css/main.2101df61.chunk.css",
-    "static/js/main.8bded57b.chunk.js"
+    "static/js/main.d5e44812.chunk.js"
   ]
 }
