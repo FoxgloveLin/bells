@@ -1,0 +1,66 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.BellPage {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 4vmin;
+    justify-content: center;
+    padding: 2vmin;
+    overflow: auto;
+
+    &-bell {
+        height: 25vmin;
+        width: 25vmin;
+        position: relative;
+        margin: 2vmin;
+
+        &-note {
+            height: 100%;
+            width: 100%;
+            
+            align-items: center;
+            background-color: wheat;
+            border: 1px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            padding: 2vmin;
+            text-align: center;
+
+
+            &.sharp {
+                background-color: white;
+            }
+
+            &:hover {
+                background-color: goldenrod;
+            }
+        }
+
+        &-lock {
+            height: 10vmin;
+            width: 10vmin;
+            top: 0;
+            right: 0;
+
+            align-items: center;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            padding: 2vmin;
+            position: absolute;
+
+            &.locked {
+                background-color: goldenrod;
+            }
+        }
+    }
+}

@@ -2,6 +2,7 @@
   "name": "bells",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lindseyrutledge.github.io/bells/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -44,7 +45,7 @@
   },
   "devDependencies": {
     "gh-pages": "^3.1.0",
-    "node-sass": "^5.0.0",
+    "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.5",
     "shake.js": "^1.2.2"
   }

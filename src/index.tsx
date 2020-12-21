@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BellPage } from './components/BellPage';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BellPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
