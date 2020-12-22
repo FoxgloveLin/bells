@@ -1,6 +1,8 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 // @ts-ignore
 import Shake from 'shake.js';
+import LockIcon from '@material-ui/icons/Lock';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
 import './BellPage.scss';
 
 interface Bell {
@@ -12,6 +14,7 @@ interface Bell {
 
 export const BellPage: FunctionComponent = () => {
     const [lockedBellIndex, setLockedBellIndex] = useState<number>();
+    const [hasDeviceMotion, setDeviceMotion] = useState<boolean>(false);
 
     const lockedBellIndexRef = useRef(lockedBellIndex);
 
@@ -20,20 +23,30 @@ export const BellPage: FunctionComponent = () => {
         lockedBellIndexRef.current = value;
     };
 
-    const initiateShakeEvent = () => {
-        const shakeEvent = new Shake({ threshold: 10, timeout: 300 });
+    useEffect(() => {
+        const checkAcceleration = (event: DeviceMotionEvent) => {
+            setDeviceMotion(true);
+        };
+
+        window.addEventListener('devicemotion', checkAcceleration);
+        
+        setTimeout(() => {
+            window.removeEventListener('devicemotion', checkAcceleration);
+        }, 1000);
+    }, []);
+
+    useEffect(() => {
+        const shakeEvent = new Shake({ threshold: 10, timeout: 200 });
         shakeEvent.start();
         // @ts-ignore
         window.addEventListener('shake', () => ringBell(undefined, true), false);
 
         return (() => {
             // @ts-ignore
-            window.removeEventListener('shake',  () => ringBell(undefined, true), false);
+            window.removeEventListener('shake', () => ringBell(undefined, true), false);
             shakeEvent.stop();
         });
-    };
-
-    useEffect(initiateShakeEvent, []);
+    }, [hasDeviceMotion]);
 
     const bellSounds: HTMLAudioElement[] = bellsCatalog.map((bell: Bell) => {
         return new Audio(`${process.env.PUBLIC_URL}/sounds/${bell.fileName}`);
@@ -57,11 +70,27 @@ export const BellPage: FunctionComponent = () => {
         }
     };
 
+    const maybeRenderLock = (index: number) => {
+        if (hasDeviceMotion) {
+            const locked = lockedBellIndex === index;
+
+            return (
+                <div
+                    className={'BellPage-bell-lock' + (locked ? ' locked' : '')}
+                    onClick={() => lockBell(index)}
+                >
+                    {locked ? <LockIcon /> : <LockOpenIcon />}
+                </div>
+            );
+        }
+    };
+
     return (
         <div className='BellPage'>
             {bellsCatalog.map((bell: Bell, index: number) => {
                 return (
                     <div
+                        key={index}
                         className='BellPage-bell'
                     >
                         <div
@@ -70,12 +99,7 @@ export const BellPage: FunctionComponent = () => {
                         >
                             {bell.displayName}
                         </div>
-                        <div
-                            className={'BellPage-bell-lock' + (lockedBellIndex === index ? ' locked' : '')}
-                            onClick={() => lockBell(index)}
-                        >
-                            🔒
-                            </div>
+                        {maybeRenderLock(index)}
                     </div>
                 );
             })}
