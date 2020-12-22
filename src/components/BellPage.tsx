@@ -13,7 +13,7 @@ interface Bell {
 }
 
 export const BellPage: FunctionComponent = () => {
-    const [bellSounds, setBellSounds] = useState<HTMLAudioElement[]>(
+    const [bellSounds] = useState<HTMLAudioElement[]>(
         bellsCatalog.map((bell: Bell) => {
             return new Audio(`${process.env.PUBLIC_URL}/sounds/${bell.fileName}`);
         })
@@ -30,7 +30,9 @@ export const BellPage: FunctionComponent = () => {
 
     useEffect(() => {
         const checkAcceleration = (event: DeviceMotionEvent) => {
-            setDeviceMotion(true);
+            if (event?.accelerationIncludingGravity?.x || event?.accelerationIncludingGravity?.x || event?.accelerationIncludingGravity?.z) {
+                setDeviceMotion(true);
+            }
         };
 
         window.addEventListener('devicemotion', checkAcceleration);
