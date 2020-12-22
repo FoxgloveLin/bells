@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/bells/static/css/main.2101df61.chunk.css",
-    "main.js": "/bells/static/js/main.c6d0ae04.chunk.js",
-    "main.js.map": "/bells/static/js/main.c6d0ae04.chunk.js.map",
+    "main.css": "/bells/static/css/main.4dae20e3.chunk.css",
+    "main.js": "/bells/static/js/main.b15b682a.chunk.js",
+    "main.js.map": "/bells/static/js/main.b15b682a.chunk.js.map",
     "runtime-main.js": "/bells/static/js/runtime-main.912b6389.js",
     "runtime-main.js.map": "/bells/static/js/runtime-main.912b6389.js.map",
     "static/js/2.459f8460.chunk.js": "/bells/static/js/2.459f8460.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.13b972d5.chunk.js": "/bells/static/js/3.13b972d5.chunk.js",
     "static/js/3.13b972d5.chunk.js.map": "/bells/static/js/3.13b972d5.chunk.js.map",
     "index.html": "/bells/index.html",
-    "static/css/main.2101df61.chunk.css.map": "/bells/static/css/main.2101df61.chunk.css.map",
+    "static/css/main.4dae20e3.chunk.css.map": "/bells/static/css/main.4dae20e3.chunk.css.map",
     "static/js/2.459f8460.chunk.js.LICENSE.txt": "/bells/static/js/2.459f8460.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.912b6389.js",
     "static/js/2.459f8460.chunk.js",
-    "static/css/main.2101df61.chunk.css",
-    "static/js/main.c6d0ae04.chunk.js"
+    "static/css/main.4dae20e3.chunk.css",
+    "static/js/main.b15b682a.chunk.js"
   ]
 }
