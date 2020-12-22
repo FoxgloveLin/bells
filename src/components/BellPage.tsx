@@ -13,6 +13,11 @@ interface Bell {
 }
 
 export const BellPage: FunctionComponent = () => {
+    const [bellSounds, setBellSounds] = useState<HTMLAudioElement[]>(
+        bellsCatalog.map((bell: Bell) => {
+            return new Audio(`${process.env.PUBLIC_URL}/sounds/${bell.fileName}`);
+        })
+    );
     const [lockedBellIndex, setLockedBellIndex] = useState<number>();
     const [hasDeviceMotion, setDeviceMotion] = useState<boolean>(false);
 
@@ -47,10 +52,6 @@ export const BellPage: FunctionComponent = () => {
             shakeEvent.stop();
         });
     }, [hasDeviceMotion]);
-
-    const bellSounds: HTMLAudioElement[] = bellsCatalog.map((bell: Bell) => {
-        return new Audio(`${process.env.PUBLIC_URL}/sounds/${bell.fileName}`);
-    });
 
     const ringBell = (index?: number, shakeMode?: boolean) => {
         const bellIndex = shakeMode ? lockedBellIndexRef.current : index;
