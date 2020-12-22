@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 // @ts-ignore
 import Shake from 'shake.js';
 import './BellPage.scss';
@@ -13,27 +13,36 @@ interface Bell {
 export const BellPage: FunctionComponent = () => {
     const [lockedBellIndex, setLockedBellIndex] = useState<number>();
 
-    useEffect(() => {
-        const shakeEvent = new Shake();
+    const lockedBellIndexRef = useRef(lockedBellIndex);
+
+    const updateBellStateAndRef = (value?: number) => {
+        setLockedBellIndex(value);
+        lockedBellIndexRef.current = value;
+    };
+
+    const initiateShakeEvent = () => {
+        const shakeEvent = new Shake({ threshold: 10, timeout: 300 });
         shakeEvent.start();
         // @ts-ignore
-        window.addEventListener('shake', ringBell, false);
+        window.addEventListener('shake', () => ringBell(undefined, true), false);
 
         return (() => {
             // @ts-ignore
-            window.removeEventListener('shake', ringBell, false);
+            window.removeEventListener('shake',  () => ringBell(undefined, true), false);
             shakeEvent.stop();
         });
-    }, []);
+    };
+
+    useEffect(initiateShakeEvent, []);
 
     const bellSounds: HTMLAudioElement[] = bellsCatalog.map((bell: Bell) => {
         return new Audio(`${process.env.PUBLIC_URL}/sounds/${bell.fileName}`);
     });
 
-    const ringBell = (index?: number) => {
-        const bellIndex = index ? index : lockedBellIndex;
+    const ringBell = (index?: number, shakeMode?: boolean) => {
+        const bellIndex = shakeMode ? lockedBellIndexRef.current : index;
 
-        if (bellIndex) {
+        if (bellIndex !== undefined) {
             const clonedBell: any = bellSounds[bellIndex].cloneNode(); // actually type HTMLAudioElement
             clonedBell.currentTime = bellsCatalog[bellIndex].startTime;
             clonedBell.play();
@@ -42,9 +51,9 @@ export const BellPage: FunctionComponent = () => {
 
     const lockBell = (index: number) => {
         if (lockedBellIndex === index) {
-            setLockedBellIndex(undefined);
+            updateBellStateAndRef(undefined);
         } else {
-            setLockedBellIndex(index);
+            updateBellStateAndRef(index);
         }
     };
 
