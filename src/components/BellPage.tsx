@@ -29,7 +29,7 @@ export const BellPage: FunctionComponent = () => {
         };
 
         window.addEventListener('devicemotion', checkAcceleration);
-        
+
         setTimeout(() => {
             window.removeEventListener('devicemotion', checkAcceleration);
         }, 1000);
@@ -139,6 +139,12 @@ const bellsCatalog: Bell[] = [
         displayName: 'F',
         fileName: 'f.wav',
         startTime: 0.35
+    },
+    {
+        displayName: 'F♯/G♭',
+        fileName: 'f-sharp-g-flat.wav',
+        startTime: 0.3,
+        sharp: true
     },
     {
         displayName: 'G',
