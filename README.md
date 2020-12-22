@@ -6,7 +6,7 @@ https://lindseyrutledge.github.io/bells/
 This is a simple application for playing hand bells.
 
 - On desktop: Click the circle representing each note to play it.
-- On mobile: As above, or you can lock in a note and shake shake your device to play the note.
+- On mobile: As above, or you can lock in a note and shake your device to play the note.
 
 [Hand bell sounds from InspectorJ on freesound.org](https://freesound.org/people/InspectorJ/packs/19255/).
 
