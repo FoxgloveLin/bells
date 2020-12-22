@@ -1,3 +1,8 @@
+$gold: #fcc200;
+$light-light: #fefdd2;
+$red: #9b0e27;
+$white: #ffffff;
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -7,6 +12,7 @@ html, body, #root {
 }
 
 #root {
+    background-color: $red;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,8 +38,7 @@ html, body, #root {
             width: 100%;
             
             align-items: center;
-            background-color: wheat;
-            border: 1px solid black;
+            background-color: $white;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -43,24 +48,25 @@ html, body, #root {
 
 
             &.sharp {
-                background-color: white;
+                background-color: black;
+                color: $white
             }
 
             &:hover {
-                background-color: goldenrod;
+                background-color: $gold;
             }
         }
 
         &-lock {
-            height: 10vmin;
-            width: 10vmin;
-            top: 0;
-            right: 0;
+            height: 9vmin;
+            width: 9vmin;
+            top: -1vmin;
+            right: -1vmin;
 
             align-items: center;
-            background-color: white;
-            border: 1px solid black;
+            background-color: $light-light;
             border-radius: 50%;
+            border: 2px solid $gold;
             cursor: pointer;
             display: flex;
             justify-content: center;
@@ -68,7 +74,12 @@ html, body, #root {
             position: absolute;
 
             &.locked {
-                background-color: goldenrod;
+                background-color: $gold;
+            }
+
+            svg {
+                height: 6.5vmin;
+                width: 6.5vmin;
             }
         }
     }
