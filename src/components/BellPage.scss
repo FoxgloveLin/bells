@@ -2,8 +2,17 @@
     box-sizing: border-box;
 }
 
+html, body, #root {
+    height: 100%;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .BellPage {
-    height: 100vh;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -13,8 +22,8 @@
     overflow: auto;
 
     &-bell {
-        height: 20vmin;
-        width: 20vmin;
+        height: 25vmin;
+        width: 25vmin;
         position: relative;
         margin: 2vmin;
 
